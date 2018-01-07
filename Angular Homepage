@@ -1,0 +1,51 @@
+Blank homepage that displays logged in user's name
+
+<!DOCTYPE html>
+<html lang="en" ng-app="MyCards">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Homepage</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/page.css" media="screen" />
+</head>
+
+<body ng-controller="HomepageController as hc">
+    <nav>
+        <div class="container">
+            <div id="navbar">
+
+                <ul class="navbar-btns">
+                    <li>
+                        <p>Hello, <span>{{hc.user}}</span> </p>
+                    </li>
+                    <li>
+                        <a href="faqindex.html "> My FAQ's</a>
+                    </li>
+                    <li>
+                        <a href="quizzes.html "> My Quizzes</a>
+                    </li>
+                    <li style="float:right ">
+                        <a ng-click="hc.logout()">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
+
+
+
+    <script src="jquery.js "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js "></script>
+    <script src="angular.js "></script>
+    <script src="modules/MyCards.js "></script>
+    <script src="services/UserServices.js "></script>
+    <script src="controllers/HomepageController.js "></script>
+
+
+
+</body>
+
+</html>
