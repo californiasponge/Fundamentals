@@ -1,4 +1,4 @@
-Blank homepage that displays logged in user's name
+//Blank homepage that displays logged in user's name
 
 <!DOCTYPE html>
 <html lang="en" ng-app="MyCards">
