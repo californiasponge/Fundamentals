@@ -1,0 +1,40 @@
+//Controller for file located on repo Fundamentals/AngularJS/Angular Homepage
+
+(function () {
+    "use strict";
+
+    angular.module("MyCards")
+        .controller("HomepageController", HomepageController);
+
+    HomepageController.$inject = ["UserService"];
+
+    function HomepageController(UserService) {
+        var vm = this;
+
+        const promise = UserService.username();
+        
+        promise.then(
+            response => {
+                vm.user = response.data.item.firstName;
+            },
+            error => {
+                console.log("Ol' No Name");
+            }
+        )
+
+        vm.logout = () => {
+            const promise = UserService.logout();
+
+            promise.then(
+                response => {
+                    window.location.href="login.html"
+                    console.log("successful");
+                },
+                error => {
+                    console.error("didn't log you out");
+                }
+            )
+        };
+
+    }
+})();
