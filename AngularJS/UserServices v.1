@@ -1,0 +1,58 @@
+SNIPPET CODE OF USER SERVICES HTTP CALLS IN ANGULAR
+
+//code wrapped in an IIFE
+(function () {
+    "use strict";
+
+    angular.module("MyCards")
+        .service("UserService", UserService);
+
+    UserService.$inject = ["$http"];
+
+    function UserService($http) {
+        const endpoint = "https://api url";
+
+        //"this" refers to the UserService but can use John Papa style guide which calls for this to be set to a variable
+        this.submitRegistration = (registrationRequest) => {
+
+            const promise = $http({       //http call returned is a promise
+                method: "POST",
+                url: "https://api url",     //endpoint diffrent from one set in variable
+                data: registrationRequest,
+                withCredentials: true
+            })
+
+            return promise;
+        }
+    
+
+        this.login = (loginInfo) => {
+
+            return $http({
+                method: "POST",
+                url: endpoint + "users/login/force",
+                data: loginInfo,
+                withCredentials: true
+            });
+        }
+        
+
+        this.username = () => {
+
+            return $http({
+                method: "GET",
+                url: endpoint + "people/currentuser",
+                withCredentials: true
+            });
+        }
+
+        this.logout = () => {
+            
+            return $http({
+                method: "GET",
+                url: endpoint + "users/logout",
+                withCredentials: true
+            });
+
+        }
+})();        
