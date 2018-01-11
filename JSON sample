@@ -1,0 +1,32 @@
+{
+	"person": {
+		"name": {
+			"title": "Ms",
+			"firstName": "Susie",
+			"lastName": "Q"
+		},
+		"dob": "91/4/27",    //months are 0 based so this data is May 27 1991
+		"ssn": 771005555
+	},
+	"address": {
+		"number": 123,
+		"street": "",
+		"city": "",
+		"state": "CA",
+		"zip": "90210"
+	},
+	"semester": {
+		"fall": {
+
+			"grade": 98,
+			"passed": true
+
+		},
+		"spring": {
+			"grade": 88,
+			"passed": true
+		}
+
+	},
+	"gibberish": [0, "test", ["table", 12, 16], true]
+}
