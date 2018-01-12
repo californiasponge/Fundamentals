@@ -1,0 +1,31 @@
+CREATE PROC faq_update --PUT 
+			@id int, 
+			@question nvarchar(280),
+			@answer nvarchar(280),
+			@display_order int
+AS
+/*----------------- TEST CODE: ---------------
+	DECLARE @id int = 3, 
+			@question nvarchar(280) = 'Whatchu talking about Willis?',
+			@answer nvarchar(280) = 'no',
+			@display_order int = 4
+
+	EXECUTE faq_update
+			@id,
+			@question,
+			@answer,
+			@display_order
+
+	SELECT id, question, answer, display_order, date_created, date_modified
+		FROM faq
+
+----------------------------------------------*/
+
+UPDATE	faq
+
+SET		question = @question, --column = param
+		  answer = @answer,
+		  display_order = @display_order,
+		  date_modified = GETUTCDATE() -- written here but not above because it is generated, as specified in the table, and we do not want this to be modified manually
+
+WHERE	id = @id; --where clause evaluates when the condition is true column eqaules parameter to prevent updating more than one row
