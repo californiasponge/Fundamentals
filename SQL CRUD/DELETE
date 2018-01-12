@@ -1,0 +1,15 @@
+CREATE PROC faq_delete
+				@id int
+
+AS
+
+DELETE FROM	faq
+	WHERE	id = @id 
+
+/*-------------------TEST CODE: --------------------
+
+DECLARE		@id int = 4;
+
+EXECUTE		faq_delete @id;
+
+----------------------------------------------------*/
