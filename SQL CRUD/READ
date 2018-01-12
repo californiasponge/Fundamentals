@@ -1,0 +1,45 @@
+CREATE PROCEDURE faq_GetAll -- read
+--no need for parameters because you are not passing any data to the get all
+AS
+SELECT	id, 
+		    question, 
+		    answer, 
+		    display_order, 
+		    date_created, 
+		    date_modified
+FROM faq
+
+/*------------------TEST CODE:------------------
+
+EXECUTE faq_GetAll
+
+------------------------------------------------*/
+
+________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________
+
+
+CREATE PROCEDURE faq_selectOne -- read/select by id
+					@id int
+
+AS
+/*------------------TEST CODE: -----------------
+
+DECLARE		@id int; --can also write as DECLARE @id int = 1; NO SET LINE
+SET			  @id = 1;
+EXECUTE		faq_selectOne @id; -- must pass the procedure a parameter
+
+------------------------------------------------*/
+
+SELECT	id, 
+		    question, 
+		    answer, 
+		    display_order, 
+		    date_created, 
+		    date_modified
+	FROM	faq
+	WHERE	id = @id
+  
+  
+  
