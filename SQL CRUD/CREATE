@@ -1,0 +1,46 @@
+CREATE PROC faq_create --insert
+			@id int OUTPUT,
+			@question nvarchar(280),
+			@answer nvarchar(280),
+			@display_order int
+
+AS 
+
+/*------------------------------------ TEST CODE: ----------------------------
+				--to run code must highlight declare and execute--
+	DECLARE	@id int,
+			@question nvarchar(280) = 'How now brown cow?',
+			@answer nvarchar(280) = 'stop.',
+			@display_order int = 3
+
+	EXECUTE faq_create
+			@id,
+			@question,
+			@answer,
+			@display_order
+	
+	SELECT id, question, answer, display_order, date_created, date_modified
+	FROM faq
+
+
+	<<SELECT *
+		FROM faq>> -- not good practice
+ 
+--------------------------------------------------------------------------------*/
+
+INSERT INTO faq(
+
+			question,
+			answer,
+			display_order
+
+) VALUES(
+
+		@question,
+		@answer,
+		@display_order
+
+)
+
+SET  @id = SCOPE_IDENTITY()
+
