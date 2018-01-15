@@ -1,0 +1,78 @@
+namespace MainNamespace
+{
+    public class FaqService
+    {
+        const string connectionString = "Server=(localdb)\\MSSqllocalDB;Initial Catalog=faqs; Integrated Security=SSPI;";
+
+            //GET ALL
+            public List<Faq> GetAll()
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandText = "faq_GetAll";
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    using (SqlDataReader reader = cmd.ExecuteReader()) 
+                    
+                    {
+                        List<Faq> results = new List<Faq>();
+
+                        while (reader.Read())
+                        {
+                            Faq faq = new Faq();
+                            faq.Id = reader.GetInt32(0);
+                            faq.Question = reader.GetString(1);
+                            faq.Answer = reader.GetString(2);
+                            faq.DisplayOrder = reader.GetInt32(3);
+                            faq.CategoryId = reader.GetInt32(4);
+                            faq.DateCreated = reader.GetDateTime(5);
+                            faq.DateModified = reader.GetDateTime(6);
+
+                            results.Add(faq);
+                        }
+                        return results;
+                    }
+                }
+            }
+
+            //GET BY ID
+            public Faq GetById(int req)
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    
+                    con.Open();
+                    
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandText = "faq_selectOne";
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@id", req));
+                    
+                    using (SqlDataReader reader = cmd.ExecuteReader()) 
+                    
+                    {
+                    
+                        Faq faq = new Faq(); //FAQ object
+
+                        while (reader.Read())
+                        {
+
+                            faq.Id = reader.GetInt32(0);
+                            faq.Question = reader.GetString(1);
+                            faq.Answer = reader.GetString(2);
+                            faq.DisplayOrder = reader.GetInt32(3);
+                            faq.CategoryId = reader.GetInt32(4);
+                            faq.DateCreated = reader.GetDateTime(5);
+                            faq.DateModified = reader.GetDateTime(6);
+
+                        }
+
+                        return faq;
+                    }
+
+                }
+            }
+    }
