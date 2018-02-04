@@ -1,0 +1,27 @@
+CREATE PROC [dbo].[Blogs_pagination]
+	@PageNumber int,
+	@PageSize int = 5
+	
+AS
+
+SET NOCOUNT ON;
+
+SELECT
+		id,
+		contents,
+		date_created,
+		date_modified,
+
+COUNT(*) OVER()AS total_posts
+
+FROM Blogs
+ORDER BY date_modified DESC
+OFFSET @PageSize * (@PageNumber - 1) ROWS
+
+FETCH NEXT @PageSize ROWS ONLY
+
+/*----------- TEST CODE ----------
+
+EXECUTE Blogs_pagination 2
+
+-----------------------------------*/
