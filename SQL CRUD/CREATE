@@ -7,11 +7,11 @@ CREATE PROC faq_create --insert
 AS 
 
 /*------------------------------------ TEST CODE: ----------------------------
-				--to run code must highlight declare and execute--
+		--to run code must highlight declare and execute--
 	DECLARE	@id int,
-			@question nvarchar(280) = 'How now brown cow?',
-			@answer nvarchar(280) = 'stop.',
-			@display_order int = 3
+		@question nvarchar(280) = 'How now brown cow?',
+		@answer nvarchar(280) = 'stop.',
+		@display_order int = 3
 
 	EXECUTE faq_create
 			@id,
