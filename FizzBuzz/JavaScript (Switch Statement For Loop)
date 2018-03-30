@@ -1,0 +1,16 @@
+ //A Classic Another Way
+ 
+for (var x = 1; x <= 100; x++) {
+  switch (true) {
+    case (x % 3 == 0 && x % 5 == 0):
+      console.log("fizzbuzz");
+      break;
+    case (x % 3 == 0):
+      console.log("fizz");
+      break;
+    case (x % 5 == 0):
+      console.log("buzz");
+      break;
+    default: console.log(x);
+  }
+}
